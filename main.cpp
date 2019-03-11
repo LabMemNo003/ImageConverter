@@ -45,7 +45,7 @@ int main(int argc, char **argv)
          "Output directory")
         ("out-prefix,p", po::value<std::string>(&options.outPrefix),
          "Output filename's prefix")
-        ("out-suffix,s", po::value<std::string>(&options.outType)->default_value("BMP"),
+        ("out-type,t", po::value<std::string>(&options.outType)->default_value("BMP"),
          "Output file's type, currently support following options:\n"
          "  BMP, PNG")
         ("height,x", po::value<int>(&options.height)->default_value(720),
