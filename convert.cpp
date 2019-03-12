@@ -38,7 +38,7 @@ void cvtColorTwoPlaneYUV2BGR(const Options &options)
         fs::create_directories(targetDir);
 
         FILE *pFile = std::fopen(ite->c_str(), "rb");
-        std::fseek(pFile, frameSize * frameStart, SEEK_SET);
+        std::fseek(pFile, frameSize * (frameStart - 1), SEEK_SET);
         for (int i = frameStart; i <= frameEnd; i++)
         {
             fread(yuvImage.data, frameSize, 1, pFile);
