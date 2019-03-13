@@ -19,6 +19,7 @@ void debug_showOptions(const Options &options)
     std::cout << "    outDir:      " << options.outDir << '\n';
     std::cout << "    outPrefix:   " << options.outPrefix << '\n';
     std::cout << "    outType:     " << options.outType << '\n';
+    std::cout << "    verbose:     " << options.verbose << '\n';
     std::cout << '\n';
     std::cout << "    code:        " << options.code << '\n';
     std::cout << "    outSuffix:   " << options.outSuffix << '\n';

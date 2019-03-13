@@ -12,7 +12,6 @@
 namespace po = boost::program_options;
 namespace fs = boost::filesystem;
 
-
 int main(int argc, char **argv)
 {
     Options options;
@@ -52,6 +51,8 @@ int main(int argc, char **argv)
          "Image height")
         ("width,y", po::value<int>(&options.width)->default_value(1280),
          "Image width")
+        ("verbose,v",
+         "Display more processing details")
     ;
     // clang-format on
 
@@ -64,6 +65,11 @@ int main(int argc, char **argv)
         std::cout << desc;
         return 0;
     }
+
+    if (vm.count("verbose"))
+        options.verbose = true;
+    else
+        options.verbose = false;
 
     if (options.convert == "YUV2BGR_NV21")
         options.code = cv::COLOR_YUV2BGR_NV21;

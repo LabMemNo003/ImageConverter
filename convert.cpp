@@ -15,6 +15,9 @@ void cvtColorTwoPlaneYUV2BGR(const Options &options)
     for (std::vector<fs::path>::const_iterator ite = options.inFiles.begin();
          ite != options.inFiles.end(); ite++)
     {
+        if (options.verbose)
+            std::cout << "Processing " << *ite << '\n';
+
         int fileSize = fs::file_size(*ite);
         int frameCnt = fileSize / frameSize;
 
@@ -41,6 +44,14 @@ void cvtColorTwoPlaneYUV2BGR(const Options &options)
         std::fseek(pFile, frameSize * (frameStart - 1), SEEK_SET);
         for (int i = frameStart; i <= frameEnd; i++)
         {
+            if (options.verbose)
+            {
+                if (i != frameStart)
+                    std::cout << "..";
+                std::cout << i;
+                if (i == frameEnd)
+                    std::cout << '\n';
+            }
             fread(yuvImage.data, frameSize, 1, pFile);
             cv::cvtColor(yuvImage, rgbImage, options.code);
             fs::path targetFile(options.outPrefix + std::to_string(i) + options.outSuffix);

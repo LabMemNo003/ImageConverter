@@ -21,6 +21,7 @@ typedef struct Options
     std::string outDir;
     std::string outPrefix;
     std::string outType;
+    bool verbose;
 
     int code;
     std::string outSuffix;
