@@ -48,7 +48,7 @@ void cvtColorTwoPlaneYUV2BGR(const Options &options)
             {
                 if (i != frameStart)
                     std::cout << "..";
-                std::cout << i;
+                std::cout << i << std::flush;
                 if (i == frameEnd)
                     std::cout << '\n';
             }
