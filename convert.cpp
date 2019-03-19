@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include <boost/filesystem.hpp>
 #include <opencv2/opencv.hpp>
 
@@ -54,7 +55,9 @@ void cvtColorTwoPlaneYUV2BGR(const Options &options)
             }
             fread(yuvImage.data, frameSize, 1, pFile);
             cv::cvtColor(yuvImage, rgbImage, options.code);
-            fs::path targetFile(options.outPrefix + std::to_string(i) + options.outSuffix);
+            char num2str[10];
+            std::sprintf(num2str,"%06d",i);
+            fs::path targetFile(options.outPrefix + std::string(num2str) + options.outSuffix);
             cv::imwrite((targetDir / targetFile).string(), rgbImage);
         }
 
